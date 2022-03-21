@@ -1,4 +1,4 @@
-# Remix Blues Stack
+# Remix Blues Material Stack
 
 ![The Remix Blues Stack](https://repository-images.githubusercontent.com/461012689/37d5bd8b-fa9c-4ab0-893c-f0a199d5012d)
 
@@ -10,6 +10,7 @@ npx create-remix --template remix-run/blues-stack
 
 ## What's in the stack
 
+- [Material-ui](https://mui.com)
 - [Multi-region Fly app deployment](https://fly.io/docs/reference/scaling/) with [Docker](https://www.docker.com/)
 - [Multi-region Fly PostgreSQL Cluster](https://fly.io/docs/getting-started/multi-region-databases/)
 - Healthcheck endpoint for [Fly backups region fallbacks](https://fly.io/docs/reference/configuration/#services-http_checks)

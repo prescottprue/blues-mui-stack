@@ -1,5 +1,6 @@
 import { Form, json, useLoaderData, Outlet, Link, NavLink } from "remix";
 import type { LoaderFunction } from "remix";
+import Button from "@mui/material/Button";
 
 import { requireUserId } from "~/session.server";
 import { useUser } from "~/utils";
@@ -27,12 +28,9 @@ export default function NotesPage() {
         </h1>
         <p>{user.email}</p>
         <Form action="/logout" method="post">
-          <button
-            type="submit"
-            className="rounded bg-slate-600 py-2 px-4 text-blue-100 hover:bg-blue-500 active:bg-blue-600"
-          >
+          <Button variant="contained" type="submit" fullWidth>
             Logout
-          </button>
+          </Button>
         </Form>
       </header>
 

@@ -8,6 +8,8 @@ import {
   redirect,
   useSearchParams,
 } from "remix";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 
 import { createUserSession, getUserId } from "~/session.server";
 import { verifyLogin } from "~/models/user.server";
@@ -97,66 +99,51 @@ export default function LoginPage() {
       <div className="mx-auto w-full max-w-md px-8">
         <Form method="post" className="space-y-6" noValidate>
           <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Email address
-            </label>
             <div className="mt-1">
-              <input
-                ref={emailRef}
+              <TextField
                 id="email"
+                inputRef={emailRef}
                 required
-                autoFocus={true}
+                label="Email address"
+                variant="outlined"
+                autoFocus
                 name="email"
                 type="email"
                 autoComplete="email"
                 aria-invalid={actionData?.errors?.email ? true : undefined}
                 aria-describedby="email-error"
-                className="w-full rounded border border-gray-500 px-2 py-1 text-lg"
+                error={actionData?.errors?.email ? true : undefined}
+                helperText={actionData?.errors?.email}
+                fullWidth
               />
-              {actionData?.errors?.email && (
-                <div className="pt-1 text-red-700" id="email-error">
-                  {actionData.errors.email}
-                </div>
-              )}
             </div>
           </div>
 
           <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Password
-            </label>
             <div className="mt-1">
-              <input
+              <TextField
                 id="password"
-                ref={passwordRef}
+                inputRef={passwordRef}
                 name="password"
                 type="password"
                 autoComplete="new-password"
+                label="Password"
+                variant="outlined"
                 aria-invalid={actionData?.errors?.password ? true : undefined}
                 aria-describedby="password-error"
-                className="w-full rounded border border-gray-500 px-2 py-1 text-lg"
+                error={actionData?.errors?.password ? true : undefined}
+                helperText={actionData?.errors?.password}
+                fullWidth
+                required
               />
-              {actionData?.errors?.password && (
-                <div className="pt-1 text-red-700" id="password-error">
-                  {actionData.errors.password}
-                </div>
-              )}
             </div>
           </div>
 
           <input type="hidden" name="redirectTo" value={redirectTo} />
-          <button
-            type="submit"
-            className="w-full rounded bg-blue-500  py-2 px-4 text-white hover:bg-blue-600 focus:bg-blue-400"
-          >
+
+          <Button variant="contained" type="submit" fullWidth>
             Log in
-          </button>
+          </Button>
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <input

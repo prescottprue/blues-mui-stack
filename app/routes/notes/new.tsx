@@ -2,6 +2,8 @@ import * as React from "react";
 import { Form, json, redirect, useActionData } from "remix";
 import type { ActionFunction } from "remix";
 import Alert from "@reach/alert";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 
 import { createNote } from "~/models/note.server";
 import { requireUserId } from "~/session.server";
@@ -63,18 +65,22 @@ export default function NewNotePage() {
       }}
     >
       <div>
-        <label className="flex w-full flex-col gap-1">
-          <span>Title: </span>
-          <input
-            ref={titleRef}
-            name="title"
-            className="flex-1 rounded-md border-2 border-blue-500 px-3 text-lg leading-loose"
-            aria-invalid={actionData?.errors?.title ? true : undefined}
-            aria-errormessage={
-              actionData?.errors?.title ? "title-error" : undefined
-            }
-          />
-        </label>
+        <TextField
+          id="title"
+          inputRef={titleRef}
+          required
+          label="title address"
+          variant="outlined"
+          autoFocus
+          name="title"
+          type="title"
+          autoComplete="title"
+          aria-invalid={actionData?.errors?.title ? true : undefined}
+          aria-describedby="title-error"
+          error={actionData?.errors?.title ? true : undefined}
+          helperText={actionData?.errors?.title}
+          fullWidth
+        />
         {actionData?.errors?.title && (
           <Alert className="pt-1 text-red-700" id="title=error">
             {actionData.errors.title}
@@ -83,19 +89,22 @@ export default function NewNotePage() {
       </div>
 
       <div>
-        <label className="flex w-full flex-col gap-1">
-          <span>Body: </span>
-          <textarea
-            ref={bodyRef}
-            name="body"
-            rows={8}
-            className="w-full flex-1 rounded-md border-2 border-blue-500 py-2 px-3 text-lg leading-6"
-            aria-invalid={actionData?.errors?.body ? true : undefined}
-            aria-errormessage={
-              actionData?.errors?.body ? "body-error" : undefined
-            }
-          />
-        </label>
+        <TextField
+          inputRef={bodyRef}
+          name="body"
+          label="Body"
+          variant="outlined"
+          aria-invalid={actionData?.errors?.body ? true : undefined}
+          aria-describedby="body-error"
+          error={actionData?.errors?.body ? true : undefined}
+          helperText={actionData?.errors?.body}
+          aria-errormessage={
+            actionData?.errors?.body ? "body-error" : undefined
+          }
+          fullWidth
+          multiline
+          rows={8}
+        />
         {actionData?.errors?.body && (
           <Alert className="pt-1 text-red-700" id="body=error">
             {actionData.errors.body}
@@ -104,12 +113,9 @@ export default function NewNotePage() {
       </div>
 
       <div className="text-right">
-        <button
-          type="submit"
-          className="rounded bg-blue-500  py-2 px-4 text-white hover:bg-blue-600 focus:bg-blue-400"
-        >
+        <Button variant="contained" type="submit" fullWidth>
           Save
-        </button>
+        </Button>
       </div>
     </Form>
   );

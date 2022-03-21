@@ -19,7 +19,7 @@ export default function Index() {
             <div className="lg:pb-18 relative px-4 pt-16 pb-8 sm:px-6 sm:pt-24 sm:pb-14 lg:px-8 lg:pt-32">
               <h1 className="text-center text-6xl font-extrabold tracking-tight sm:text-8xl lg:text-9xl">
                 <span className="block uppercase text-blue-500 drop-shadow-md">
-                  Blues Stack
+                  Blues Material Stack
                 </span>
               </h1>
               <p className="mx-auto mt-6 max-w-lg text-center text-xl text-white sm:max-w-3xl">
@@ -79,6 +79,11 @@ export default function Index() {
                 src: "https://user-images.githubusercontent.com/1500684/157764484-ad64a21a-d7fb-47e3-8669-ec046da20c1f.svg",
                 alt: "Prisma",
                 href: "https://prisma.io",
+              },
+              {
+                src: "https://user-images.githubusercontent.com/2992224/159208689-de5475a8-763c-42e8-b3bc-1e14bab96d40.svg",
+                alt: "MUI",
+                href: "https://mui.com",
               },
               {
                 src: "https://user-images.githubusercontent.com/1500684/157764276-a516a239-e377-4a20-b44a-0ac7b65c8c14.svg",
